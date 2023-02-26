@@ -1,0 +1,38 @@
+services:
+  api:
+    container_name: "bookbox-backend-dev"
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    ports:
+      - 4443:4443
+    env_file:
+      - .env
+    environment:
+      - DB_HOST=db
+      - REDIS_HOST=redis
+    depends_on:
+      - db
+      - redis
+    volumes:
+      - .:/bookbox-api
+    command: go run cmd/bookbox-backend/main.go -b 0.0.0.0
+  db:
+    container_name: "bookbox-db-dev"
+    image: postgres:latest
+    restart: unless-stopped
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=postgres
+      - PGPORT=5433
+    ports:
+      - 5433:5433
+  redis:
+    container_name: "bookbox-redis-dev"
+    image: redis:latest
+    command: >
+      --requirepass password
+    restart: unless-stopped
+    ports:
+      - 6380:6380

@@ -1,0 +1,16 @@
+# syntax=docker/dockerfile:1
+
+FROM golang:1.19-bullseye AS dev
+
+RUN apt-get update && apt-get -y install --no-install-recommends \
+    ca-certificates \
+    bash \
+    tzdata
+
+WORKDIR /bookbox-api
+COPY . .
+COPY /internal/server/ca/binaries/mkcert-linux /bin/mkcert
+RUN chmod a+x /bin/mkcert
+
+RUN go mod tidy
+EXPOSE 4443
