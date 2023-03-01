@@ -6,6 +6,7 @@ require (
 	github.com/fatih/color v1.14.1
 	github.com/gin-gonic/gin v1.8.2
 	github.com/go-redis/redis v6.15.9+incompatible
+	github.com/google/uuid v1.3.0
 	go.uber.org/zap v1.24.0
 	gorm.io/gorm v1.24.5
 )
