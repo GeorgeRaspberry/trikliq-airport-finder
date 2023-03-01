@@ -1,8 +1,8 @@
 package redis
 
 import (
-	"bookbox-backend/internal/model"
 	"os"
+	"trikliq-airport-finder/internal/model"
 )
 
 var Redis model.Redis

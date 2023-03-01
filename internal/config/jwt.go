@@ -1,7 +1,6 @@
 package config
 
 import (
-	"bookbox-backend/pkg/logger"
 	"crypto/ed25519"
 	"crypto/x509"
 	"encoding/pem"
@@ -9,6 +8,7 @@ import (
 	"path/filepath"
 	"strconv"
 	"time"
+	"trikliq-airport-finder/pkg/logger"
 
 	"go.uber.org/zap"
 )

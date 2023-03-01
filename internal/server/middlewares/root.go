@@ -10,7 +10,7 @@ import (
 	"runtime"
 	"strings"
 
-	"bookbox-backend/pkg/logger"
+	"trikliq-airport-finder/pkg/logger"
 
 	"go.uber.org/zap"
 )

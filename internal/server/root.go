@@ -7,14 +7,13 @@ import (
 	"net"
 	"net/http"
 
-	_ "bookbox-backend/internal/config"
-	_ "bookbox-backend/internal/database"
-	_ "bookbox-backend/pkg/redis"
+	_ "trikliq-airport-finder/internal/config"
+	_ "trikliq-airport-finder/pkg/redis"
 
-	"bookbox-backend/internal/server/ca"
-	"bookbox-backend/internal/server/middlewares"
-	"bookbox-backend/internal/server/router"
-	"bookbox-backend/pkg/logger"
+	"trikliq-airport-finder/internal/server/ca"
+	"trikliq-airport-finder/internal/server/middlewares"
+	"trikliq-airport-finder/internal/server/router"
+	"trikliq-airport-finder/pkg/logger"
 
 	"github.com/gin-gonic/gin"
 	"go.uber.org/zap"

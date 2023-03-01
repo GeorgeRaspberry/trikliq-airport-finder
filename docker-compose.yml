@@ -1,6 +1,6 @@
 services:
   api:
-    container_name: "bookbox-backend-dev"
+    container_name: "trikliq-airport-finder-dev"
     build:
       context: .
       dockerfile: Dockerfile.dev
@@ -16,7 +16,7 @@ services:
       - redis
     volumes:
       - .:/bookbox-api
-    command: go run cmd/bookbox-backend/main.go -b 0.0.0.0
+    command: go run cmd/trikliq-airport-finder/main.go -b 0.0.0.0
   db:
     container_name: "bookbox-db-dev"
     image: postgres:latest

@@ -1,8 +1,8 @@
 package logger
 
 import (
-	"bookbox-backend/pkg/logger/encoders"
-	"bookbox-backend/pkg/logger/filters"
+	"trikliq-airport-finder/pkg/logger/encoders"
+	"trikliq-airport-finder/pkg/logger/filters"
 
 	"go.uber.org/zap"
 	"go.uber.org/zap/zapcore"

@@ -1,9 +1,9 @@
 package error
 
 import (
-	"bookbox-backend/internal/model"
 	"encoding/json"
 	"fmt"
+	"trikliq-airport-finder/internal/model"
 
 	"github.com/gin-gonic/gin"
 	"go.uber.org/zap"

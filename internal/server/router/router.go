@@ -1,7 +1,7 @@
 package router
 
 import (
-	"bookbox-backend/internal/server/middlewares"
+	"trikliq-airport-finder/internal/server/middlewares"
 
 	"github.com/gin-gonic/gin"
 )

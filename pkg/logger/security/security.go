@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"strings"
 
-	libTransform "bookbox-backend/pkg/transform"
+	libTransform "trikliq-airport-finder/pkg/transform"
 )
 
 //lint:ignore GLOBAL this is okay

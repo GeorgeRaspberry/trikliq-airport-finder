@@ -1,4 +1,4 @@
-module bookbox-backend
+module trikliq-airport-finder
 
 go 1.18
 
@@ -7,7 +7,6 @@ require (
 	github.com/gin-gonic/gin v1.8.2
 	github.com/go-redis/redis v6.15.9+incompatible
 	go.uber.org/zap v1.24.0
-	gorm.io/driver/postgres v1.4.6
 	gorm.io/gorm v1.24.5
 )
 
@@ -18,9 +17,6 @@ require (
 	github.com/go-playground/validator/v10 v10.11.1 // indirect
 	github.com/goccy/go-json v0.9.11 // indirect
 	github.com/google/go-cmp v0.5.9 // indirect
-	github.com/jackc/pgpassfile v1.0.0 // indirect
-	github.com/jackc/pgservicefile v0.0.0-20221227161230-091c0ba34f0a // indirect
-	github.com/jackc/pgx/v5 v5.2.0 // indirect
 	github.com/jinzhu/inflection v1.0.0 // indirect
 	github.com/jinzhu/now v1.1.5 // indirect
 	github.com/json-iterator/go v1.1.12 // indirect

@@ -12,10 +12,10 @@ import (
 	"time"
 	"unicode/utf8"
 
-	"bookbox-backend/pkg/logger/filters"
+	"trikliq-airport-finder/pkg/logger/filters"
 
-	logSecurity "bookbox-backend/pkg/logger/security"
-	libTransform "bookbox-backend/pkg/transform"
+	logSecurity "trikliq-airport-finder/pkg/logger/security"
+	libTransform "trikliq-airport-finder/pkg/transform"
 
 	"github.com/fatih/color"
 	"go.uber.org/zap"

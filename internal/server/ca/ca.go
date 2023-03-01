@@ -10,7 +10,7 @@ import (
 	"runtime"
 	"strings"
 
-	libIO "bookbox-backend/pkg/io"
+	libIO "trikliq-airport-finder/pkg/io"
 
 	"go.uber.org/zap"
 )
