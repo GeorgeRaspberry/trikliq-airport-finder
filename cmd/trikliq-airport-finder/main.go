@@ -12,38 +12,12 @@ import (
 func main() {
 	//server.Start()
 
-	// var (
-	// 	filePath = "file.json"
-	// 	airports = make(map[string]map[string]string)
-	// )
-
-	// file, err := os.Open(filePath)
-	// if err != nil {
-	// 	fmt.Printf("failed to open a file")
-	// }
-
-	// bytes, _ := ioutil.ReadAll(file)
-
-	// _ = json.Unmarshal(bytes, &airports)
-
-	// icao := make(map[string]interface{})
-	// iata := make(map[string]interface{})
-
-	// for _, value := range airports {
-
-	// 	if value["iata"] != "" {
-	// 		iata[value["iata"]] = value
-	// 	}
-
-	// 	if value["icao"] != "" {
-	// 		icao[value["icao"]] = value
-	// 	}
-	// }
 	raw, err := ioutil.ReadFile("data/tickets/singaporeAirlines.pdf")
 	if err != nil {
 		fmt.Println(err.Error())
 		return
 	}
+
 	txt, _ := pdf.PdfToTxt(raw)
 	fmt.Println(txt)
 	newTxt := ""
@@ -52,7 +26,6 @@ func main() {
 		if unicode.IsDigit(ch) || unicode.IsLetter(ch) {
 			newTxt += string(ch)
 		}
-
 		if unicode.IsSpace(ch) {
 			newTxt += " "
 		}
@@ -85,28 +58,24 @@ func main() {
 
 	// }
 
-	// airportsBytes, _ := json.Marshal(iata)
-	// ioutil.WriteFile("iata.json", airportsBytes, 0744)
-
-	// airportsBytes, _ = json.Marshal(icao)
-	// ioutil.WriteFile("icao.json", airportsBytes, 0744)
-
-	// fmt.Printf("JSON data written to file")
-
 	trie := pdf.TrieData()
 	//Passing the words in the trie
-	word := []string{"aqua", "jack", "card", "care"}
+	raw, _ = ioutil.ReadFile("data/city.json")
+
+	word := make([]string, 0)
+
+	json.Unmarshal(raw, &word)
+
 	for _, wr := range word {
 		trie.Insert(wr)
 	}
+
+	words := strings.Split(txt, " ")
 	//initializing search for the words
-	words_Search := []string{"aqua", "jack", "card", "care", "cat", "dog", "can"}
-	for _, wr := range words_Search {
+	for _, wr := range words {
 		found := trie.Search(wr)
 		if found == 1 {
-			fmt.Printf("\"%s\"Word found in trie\n", wr)
-		} else {
-			fmt.Printf(" \"%s\" Word not found in trie\n", wr)
+			fmt.Printf("\"%s\"Word found in trie\n", string(wr))
 		}
 	}
 }
