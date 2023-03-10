@@ -1,7 +1,5 @@
 package pdf
 
-import "fmt"
-
 // Declaring trie_Node  for creating node in a trie
 type trie_Node struct {
 	//assigning limit of 26 for child nodes
@@ -26,11 +24,12 @@ func TrieData() *Trie {
 func (t *Trie) Insert(word string) {
 	current := t.root
 	for _, wr := range word {
-		fmt.Println("word: ", word)
-		fmt.Println("wr: ", wr)
-		fmt.Println("a: ", 'a')
 
 		index := wr - 'a'
+		if wr < 97 || wr > 122 {
+			continue
+		}
+
 		if current.childrens[index] == nil {
 			current.childrens[index] = new(trie_Node)
 		}
@@ -43,7 +42,11 @@ func (t *Trie) Insert(word string) {
 func (t *Trie) Search(word string) int {
 	current := t.root
 	for _, wr := range word {
+		if wr < 97 || wr > 122 {
+			continue
+		}
 		index := wr - 'a'
+
 		if current.childrens[index] == nil {
 			return 0
 		}

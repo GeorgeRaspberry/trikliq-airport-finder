@@ -1,0 +1,54 @@
+{
+    "arriving": [
+        {
+            "city": "Denpasar-Bali Island",
+            "country": "ID",
+            "elevation": "",
+            "iata": "DPS",
+            "icao": "WADD",
+            "lat": "",
+            "lon": "",
+            "name": "Ngurah Rai (Bali) International Airport",
+            "state": "Bali",
+            "tz": "Asia/Makassar"
+        },
+        {
+            "city": "Singapore",
+            "country": "SG",
+            "elevation": "",
+            "iata": "SIN",
+            "icao": "WSSS",
+            "lat": "",
+            "lon": "",
+            "name": "Singapore Changi International Airport",
+            "state": "North-East",
+            "tz": "Asia/Singapore"
+        }
+    ],
+    "departing": [
+        {
+            "city": "Singapore",
+            "country": "SG",
+            "elevation": "",
+            "iata": "SIN",
+            "icao": "WSSS",
+            "lat": "",
+            "lon": "",
+            "name": "Singapore Changi International Airport",
+            "state": "North-East",
+            "tz": "Asia/Singapore"
+        },
+        {
+            "city": "Denpasar-Bali Island",
+            "country": "ID",
+            "elevation": "",
+            "iata": "DPS",
+            "icao": "WADD",
+            "lat": "",
+            "lon": "",
+            "name": "Ngurah Rai (Bali) International Airport",
+            "state": "Bali",
+            "tz": "Asia/Makassar"
+        }
+    ]
+}

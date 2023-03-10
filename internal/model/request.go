@@ -1,25 +1,21 @@
 package model
 
-type Request struct {
-	Entity   string         `json:"entity"`
-	Data     map[string]any `json:"data"`
-	Metadata Metadata       `json:"metadata"`
-}
+import "net/textproto"
 
-type Metadata struct {
-	Filter  Filter  `json:"filter"`
-	OrderBy OrderBy `json:"orderBy"`
-	//GroupBy string    `json:"groupBy"`
-	//SumBy  SumBy    `json:"sumBy"`
-	Fields []string `json:"fields"`
-	Limit  int      `json:"limit"`
-	Page   int      `json:"page"`
+type Request struct {
+	Data map[string]any `json:"data"`
 }
 
 type Response struct {
 	Status bool     `json:"status"`
 	Errors []string `json:"errors"`
 	Data   any      `json:"data,omitempty"`
-	Limit  int      `json:"limit,omitempty"`
-	Page   int      `json:"page,omitempty"`
+}
+
+type MultipartFile struct {
+	Filename string `json:"filename"`
+	Size     int64  `json:"size"`
+	Header   textproto.MIMEHeader
+	MimeType string `json:"mimeType"`
+	Content  []byte `json:"content"`
 }
