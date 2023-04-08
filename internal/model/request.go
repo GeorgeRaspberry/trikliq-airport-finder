@@ -3,7 +3,7 @@ package model
 import "net/textproto"
 
 type Request struct {
-	Data map[string]any `json:"data"`
+	Data any `json:"data"`
 }
 
 type Response struct {

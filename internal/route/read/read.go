@@ -14,25 +14,14 @@ import (
 func ReadHandler(ctx *gin.Context) {
 
 	var (
-		request  = model.Request{}
+		//request  = model.Request{}
 		response = model.Response{}
 	)
 
 	requestID, _ := ctx.Get("id")
 
-	// bind input data to request format
-	err := ctx.ShouldBind(&request)
-	if err != nil {
-		logger.Log.Error("Failed to bind input data",
-			zap.Error(err),
-		)
-
-		fail.ReturnError(ctx, response, fail.SystemError(requestID), logger.Log)
-		return
-	}
-
 	log := logger.Log.WithOptions(zap.Fields(
-		zap.Any("data", request.Data),
+		zap.Any("requestID", requestID),
 	))
 
 	log.Info("read started")
@@ -81,7 +70,7 @@ func ReadHandler(ctx *gin.Context) {
 
 	default:
 
-		fail.ReturnError(ctx, response, "content-type is nor multipart/form-data", log)
+		fail.ReturnError(ctx, response, "content-type is not multipart/form-data", log)
 		return
 	}
 

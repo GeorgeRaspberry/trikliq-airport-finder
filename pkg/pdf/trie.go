@@ -40,20 +40,25 @@ func (t *Trie) Insert(word string) {
 
 // Initializing the search for word in node
 func (t *Trie) Search(word string) int {
+	oneMatch := false
 	current := t.root
 	for _, wr := range word {
 		if wr < 97 || wr > 122 {
-			continue
+			return 0
 		}
 		index := wr - 'a'
 
 		if current.childrens[index] == nil {
 			return 0
 		}
+
+		oneMatch = true
 		current = current.childrens[index]
 	}
-	if current.wordEnds {
+
+	if current.wordEnds && oneMatch {
 		return 1
 	}
+
 	return 0
 }

@@ -2,6 +2,7 @@ package parse
 
 import (
 	"encoding/json"
+	"fmt"
 	"io/ioutil"
 	"strings"
 	"trikliq-airport-finder/pkg/pdf"
@@ -69,6 +70,7 @@ func Parse(raw []byte, log *zap.Logger) (finalized map[string]any) {
 		found := trie.Search(wr)
 		if found == 1 {
 			if !transform.InSlice(wr, foundCities) {
+				fmt.Println("wr: ", wr)
 				foundCities = append(foundCities, wr)
 			}
 		}
@@ -76,7 +78,8 @@ func Parse(raw []byte, log *zap.Logger) (finalized map[string]any) {
 
 	finalCandidates := make([]string, 0)
 	log.Debug("found candidates",
-		zap.Strings("candidates", finalCandidates),
+		zap.Strings("codes", candidates),
+		zap.Strings("cities", foundCities),
 	)
 
 	for _, candidate := range candidates {
@@ -102,6 +105,10 @@ func Parse(raw []byte, log *zap.Logger) (finalized map[string]any) {
 			finalCandidates = append(finalCandidates, candidate)
 		}
 	}
+
+	log.Debug("finalized",
+		zap.Strings("candidates", finalCandidates),
+	)
 
 	finalized = Finalize(finalCandidates, iata)
 

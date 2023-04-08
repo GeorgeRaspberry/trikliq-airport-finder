@@ -8,6 +8,7 @@ import (
 	"net/http"
 
 	_ "trikliq-airport-finder/internal/config"
+	_ "trikliq-airport-finder/internal/route/read"
 	_ "trikliq-airport-finder/pkg/redis"
 
 	"trikliq-airport-finder/internal/server/ca"
