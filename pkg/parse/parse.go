@@ -4,6 +4,8 @@ import (
 	"encoding/json"
 	"fmt"
 	"io/ioutil"
+	"os"
+	"regexp"
 	"strings"
 	"trikliq-airport-finder/pkg/pdf"
 	"trikliq-airport-finder/pkg/transform"
@@ -15,6 +17,8 @@ import (
 func Parse(raw []byte, log *zap.Logger) (finalized map[string]any) {
 
 	txt, _ := pdf.PdfToTxt(raw)
+	fileContent, _ := json.Marshal(txt)
+	os.WriteFile("fileContent.json", fileContent, 0744)
 	newTxt := ""
 
 	for _, ch := range txt {
@@ -53,8 +57,21 @@ func Parse(raw []byte, log *zap.Logger) (finalized map[string]any) {
 		trie.Insert(city)
 	}
 
-	txt = strings.Replace(txt, "\t", " ", -1)
 	txt = strings.Replace(txt, "\n", " ", -1)
+
+	fmt.Println("looking for date matches...")
+
+	dateRegex := regexp.MustCompile(`(\d{1,2}\s+\w+\s+\d{4})`)
+
+	lines := strings.Split(txt, "\n")
+
+	for _, line := range lines {
+		if match := dateRegex.FindStringSubmatch(line); match != nil {
+			fmt.Println(match[1])
+		}
+	}
+
+	txt = strings.Replace(txt, "\t", " ", -1)
 	txt = strings.Replace(txt, "\f", " ", -1)
 
 	words := strings.Split(txt, " ")
@@ -66,11 +83,12 @@ func Parse(raw []byte, log *zap.Logger) (finalized map[string]any) {
 			continue
 		}
 
+		fmt.Println("wr: ", wr)
+
 		wr = strings.ToLower(wr)
 		found := trie.Search(wr)
 		if found == 1 {
 			if !transform.InSlice(wr, foundCities) {
-				fmt.Println("wr: ", wr)
 				foundCities = append(foundCities, wr)
 			}
 		}

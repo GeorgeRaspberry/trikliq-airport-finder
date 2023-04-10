@@ -74,7 +74,7 @@ func ReadHandler(ctx *gin.Context) {
 		return
 	}
 
-	log.Info("create finished")
+	log.Info("read finished")
 
 	response.Status = true
 	ctx.JSON(200, response)

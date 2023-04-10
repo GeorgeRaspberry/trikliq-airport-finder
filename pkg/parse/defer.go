@@ -1,5 +1,13 @@
 package parse
 
+import "regexp"
+
+// Helper function to check if a string ends with a date component
+func isDateComponent(str string) bool {
+	dateRegex := regexp.MustCompile(`\b(\d{1,2}[-/]|([a-zA-Z]{3,9}\s+\d{1,2},\s+))\d{2,4}\b`)
+	return dateRegex.MatchString(str)
+}
+
 // func Defer(foundCities []string, iata map[string]map[string]string, log *zap.Logger) []string {
 // 	log.Debug("deferring to cities")
 
